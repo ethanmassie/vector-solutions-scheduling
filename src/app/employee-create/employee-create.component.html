@@ -1,0 +1,25 @@
+<form class="vertical-content" [formGroup]="employeeForm">
+  <mat-form-field>
+    <mat-label>First Name*</mat-label>
+    <input text matInput formControlName="firstName">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Middle Name</mat-label>
+    <input text matInput formControlName="middleName">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Last Name*</mat-label>
+    <input text matInput formControlName="lastName">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Email Address</mat-label>
+    <input text matInput formControlName="emailAddress">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Employee Number*</mat-label>
+    <input text matInput formControlName="employeeNumber">
+  </mat-form-field>
+  <button mat-raised-button [disabled]="employeeForm.invalid" (click)="submit()">
+    Create Employee
+  </button>
+</form>

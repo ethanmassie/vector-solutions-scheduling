@@ -1,0 +1,21 @@
+<form class="vertical-content" [formGroup]="shiftForm">
+  <mat-form-field>
+    <mat-label>Start Time</mat-label>
+    <input formControlName="startDate" matInput type="datetime-local">
+    <mat-error *ngIf="shiftForm.get('startDate')?.hasError('required')">Start Time Is Required</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>End Time</mat-label>
+    <input formControlName="endDate" matInput type="datetime-local">
+    <mat-error *ngIf="shiftForm.get('endDate')?.hasError('required')">End Time Is Required</mat-error>
+  </mat-form-field>
+
+  <!-- This obviously needs styling but I'm running low on time -->
+  <div *ngIf="shiftForm.hasError('startBeforeEnd')">
+    End Date Must Be After The Start Date
+  </div>
+
+  <button mat-raised-button [disabled]="shiftForm.invalid" (click)="submitShift()">
+    Submit
+  </button>
+</form>

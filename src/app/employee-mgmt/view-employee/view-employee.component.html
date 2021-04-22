@@ -1,0 +1,21 @@
+<ng-container *ngIf="selectedEmployee$ | async as employee">
+  <button mat-raised-button (click)="openShiftDialog()">Assign Shift</button>
+  <h2>{{ employee.lastName }}, {{ employee.firstName }}</h2>
+</ng-container>
+
+<!--
+  I'm going past 2 hours now so I'll call it here.  What I would like to do is group the shifts by
+  their date and display them in a card with the date at the header and the times vertically going
+  down the card in order.
+  I would also add a date picker so the user can select which week to view and filter the dates by
+  that.  This would meet the requirement of showing all shifts in a week for a particular user
+ -->
+<ng-container *ngIf="schedule$ | async as schedule">
+  <h3>Employee Shifts</h3>
+  <div class="schedule-container">
+    <div class="schedule-card" *ngFor="let shift of schedule">
+      <p>Start Date: {{ shift.startDate | date:'medium' }}</p>
+      <p>End Date: {{ shift.endDate | date:'medium' }}</p>
+    </div>
+  </div>
+</ng-container>

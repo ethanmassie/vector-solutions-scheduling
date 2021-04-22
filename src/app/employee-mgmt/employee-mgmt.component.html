@@ -1,0 +1,20 @@
+<form>
+  <mat-form-field>
+    <mat-label>Employee Name Or Number</mat-label>
+    <input  type="text"
+            placeholder="Search Employees..."
+            aria-label="Employee Name"
+            matInput
+            [formControl]="searchControl"
+            [matAutocomplete]="employeeList">
+    <mat-autocomplete #employeeList>
+      <mat-option *ngFor="let employee of employees$ | async" [value]="employee" routerLink="/mgmt/{{employee.employeeNumber}}">
+        {{ employee.lastName }}, {{ employee.firstName}} ({{employee.employeeNumber}})
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
+
+<div>
+  <router-outlet></router-outlet>
+</div>
